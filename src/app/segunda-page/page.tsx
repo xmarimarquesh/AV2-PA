@@ -37,13 +37,14 @@ const SegundaRota = () => {
 
     return (
         <div className="flex items-center justify-center flex-col gap-10">
-            <h1 className="font-bold text-[2em] mt-10">ROTA DOIS - UseEffect Axios</h1>
+            <h1 className="w-[80%] flex justify-center font-bold text-[2em] mt-10">ROTA DOIS - UseEffect Axios</h1>
             <input className="w-4/5 border-b-2 border-black" placeholder="Pesquise por página..." type="number" value={page} onChange={(e) => setpage(e.target.value)} />
             <input className="w-4/5 border-b-2 border-black" placeholder="Pesquise por personagem..." type="text" value={name} onChange={(e) => setName(e.target.value)} />
 
             {erro && <h5 className="text-black">{errorMessage}</h5>}
 
             <div className="flex flex-wrap w-full items-center justify-center">
+            <Suspense fallback={<div>Loading...</div>}>
                 {data.map((item, i) => {
                     return(
                         <div key={i} className="w-[300px] h-auto bg-white m-5 rounded-2xl shadow-gray shadow-xl hover:scale-110 transition ease-in-out">
@@ -52,6 +53,7 @@ const SegundaRota = () => {
                         </div>
                     )
                 })}
+            </Suspense>
             </div>
         </div>
     )
