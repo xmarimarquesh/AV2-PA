@@ -2,7 +2,8 @@
 const nextConfig = {
     images: {
         remotePatterns: [
-            { protocol: "https", hostname: "static.wikia.nocookie.net" }
+            { protocol: "https", hostname: "static.wikia.nocookie.net" },
+            { protocol: "https", hostname: "disney.fandom.com" },
         ],
     },
     rewrites: () => {
