@@ -1,7 +1,9 @@
 "use client"
 
 import { useEffect, useState, Suspense } from "react";
+import img_disney from "../assets/disney.jpg";
 import Image from "next/image";
+
 
 interface IData {
     name: string,
@@ -23,6 +25,8 @@ export default function Home() {
     }, [])
 
   return (
+    <div className="w-full bg-black text-white">
+      <Image className="w-full" src={img_disney} width={2000} height={500} alt="image Disney"/>
     <div className="flex items-center justify-center flex-col gap-10">
       <h1 className="w-[80%] flex justify-center font-bold text-[2em] mt-10">ROTA UM - UseEffect Fetch</h1>
       <div className="flex flex-wrap w-full items-center justify-center">
@@ -30,16 +34,17 @@ export default function Home() {
       <Suspense fallback={<div>Loading...</div>}>
         {characters.map((item, index) => {
           return (
-            <div key={index} className="w-[300px] h-auto bg-white m-5 rounded-2xl shadow-gray shadow-xl hover:scale-110 transition ease-in-out">
-                    <Image className="rounded-t-3xl w-full h-60 cover" src={item.imageUrl} alt="" width={400} height={400} />
-                    <div className="p-2 flex flex-col items-center justify-center">
-                      <h1 className="text-[1.1em] font-bold">{item.name}</h1>
-                    </div>
-                </div>
+            <div key={index} className="w-[300px] h-auto rounded-md text-white bg-blue-950 m-5 shadow-gray-500 shadow-md hover:scale-110 transition ease-in-out">
+              <Image className="grayscale rounded-t-md w-full h-60 cover hover:grayscale-0 transition ease-in-out" src={item.imageUrl} alt="image" width={400} height={400} />
+              <div className="p-2 flex flex-col items-center justify-center">
+                <h1 className="text-[1.1em] font-bold">{item.name}</h1>
+              </div>
+            </div>
             )
           })}
         </Suspense>
       </div>
+    </div>
     </div>
   );
 }

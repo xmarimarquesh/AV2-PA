@@ -22,12 +22,13 @@ const TerceiraRota = async () => {
                 <Suspense fallback={<div>Loading...</div>}>
                     {dados.data.map((item) => {
                         return(
-                            <div key={item._id} className="w-[300px] h-auto bg-black m-5 rounded-3xl shadow-gray shadow-xl hover:scale-110 transition ease-in-out">
-                                <Image className="rounded-t-3xl w-full h-60 cover" src={item.imageUrl} alt="Image" width={150} height={150} />
-                                <h2 className="p-2 text-[1.1em] text-white font-bold">{item.name}</h2>
-                                <div className="flex items-center justify-center self-center mt-2 mb-2">
-                                    <Link className="bg-white p-2 shadow-md shadow-gray-500 text-black rounded-2xl mb-4" href={`/person/${item._id}`}>ver mais</Link>
-                                </div>
+                            <div key={item._id} className="w-[300px] h-auto rounded-lg text-white bg-blue-950 m-5 shadow-gray-800 shadow-xl hover:scale-110 transition ease-in-out">
+                                <Link href={`/person/${item._id}`} className="cursor-pointer"><Image className="rounded-t-md w-full h-60 cover transition ease-in-out" src={item.imageUrl} alt="Image" width={150} height={150} />
+                                    <h2 className="p-2 text-[1.1em] text-white font-bold">{item.name}</h2>
+                                    <div className="flex items-end self-center w-full justify-end">
+                                        <Link className="underline p-1 m-2  text-white rounded-lg " href={`/person/${item._id}`}>ver mais</Link>
+                                    </div>
+                                </Link>
                             </div>
                         )
                     })}
